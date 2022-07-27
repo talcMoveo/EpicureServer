@@ -1,11 +1,14 @@
-const model = require("../schemes/dishScheme").DishesModel;
+const model = require("../schemes/dishScheme").Dish;
 
 const postDish = (data) => {
   return model.create(data);
 };
 
 const getAllDishes = () => {
-
+  // return await model.find().populate("restaurantRef");
 }
 
-module.exports = { postDishe };
+module.exports = {
+  postDish,
+  getAllDishes
+};

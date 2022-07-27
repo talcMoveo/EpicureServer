@@ -5,15 +5,18 @@ const addChef = async (req, res) => {
     chef = {
       ...req.body,
     };
-    const handlerResult = await chefsHandler.postChef(chef);
+    const result = await chefsHandler.postChef(chef);
     res.status(200).json({
       status: "Success",
-      data: handlerResult,
+      data: result,
     });
-  } catch (error) {
+  } catch (err) {
+    console.log("err:", err);
+    // console.log("req:", req);
+    // console.log("res:", res);
     res.status(400).json({
-      status: "Failed",
-      message: error,
+      status: "Failure",
+      message: {err},
     });
   }
 };

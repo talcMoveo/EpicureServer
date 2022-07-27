@@ -1,4 +1,3 @@
-const { ObjectId } = require("mongodb");
 const mongoose = require("mongoose");
 
 const ChefSchema = new mongoose.Schema({
@@ -13,6 +12,6 @@ const ChefSchema = new mongoose.Schema({
   },
 });
 
-const Chef = mongoose.model("Chef", ChefSchema);
+const ChefModel = mongoose.model("Chef", ChefSchema);
 
-module.exports = Chef;
+module.exports = { ChefModel };

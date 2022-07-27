@@ -1,4 +1,4 @@
-const model = require("../schemes/restaurantScheme").RestaurantsModel;
+const model = require("../schemes/restaurantScheme").Restaurant;
 
 const postRestaurants = (data) => {
   return model.create(data);
