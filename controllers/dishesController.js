@@ -18,4 +18,22 @@ const addDish = async (req, res) => {
   }
 };
 
-module.exports = { addDish };
+const getDishesList = async (req, res) => {
+  try {
+    const handlerResult = await dishedHandler.getAllDishes();
+    res.status(200).json({
+      status: "Success",
+      data: handlerResult,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "Failed",
+      message: error,
+    });
+  }
+}
+
+module.exports = {
+  addDish,
+  getDishesList
+};
