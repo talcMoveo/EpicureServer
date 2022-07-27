@@ -26,12 +26,6 @@ db.once("open", function () {
   console.log("Connected successfully");
 });
 
-// let corsOptions = {
-//   origin: "http://localhost:3000",
-//   credentials: true,
-//   optionSuccessStatus: 200,
-// };
-
 app.use(express.urlencoded({ extended : true }));
 app.use(cors());
 app.use('/api', router);
