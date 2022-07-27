@@ -10,13 +10,10 @@ const addChef = async (req, res) => {
       status: "Success",
       data: result,
     });
-  } catch (err) {
-    console.log("err:", err);
-    // console.log("req:", req);
-    // console.log("res:", res);
+  } catch (error) {
     res.status(400).json({
       status: "Failure",
-      message: {err},
+      message: error,
     });
   }
 };

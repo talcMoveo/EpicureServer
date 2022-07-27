@@ -1,7 +1,7 @@
-const model = require("../schemes/dishScheme").Dish;
+const dishModel = require("../schemes/dishScheme").DishModel;
 
-const postDish = (data) => {
-  return model.create(data);
+const postDish = async (data) => {
+  return dishModel.create(data);
 };
 
 const getAllDishes = () => {

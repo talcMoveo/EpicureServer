@@ -3,4 +3,4 @@ const restaurantsController = require("../controllers/restaurantsController");
 
 module.exports = { restaurantsRouter };
 
-restaurantsRouter.post("/", (req, res) => {restaurantsController.requestAddRestaurant});
+restaurantsRouter.post("/", restaurantsController.addRestaurant);
