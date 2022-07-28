@@ -1,5 +1,4 @@
-// const { ObjectId } = require("mongodb");
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const RestaurantSchema = new mongoose.Schema({
   name: {
@@ -13,10 +12,10 @@ const RestaurantSchema = new mongoose.Schema({
   },
   chef: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "chefs",
+    ref: 'chefs',
   },
 });
 
-const RestaurantModel = mongoose.model("Restaurant", RestaurantSchema);
+const RestaurantModel = mongoose.model('Restaurant', RestaurantSchema);
 
 module.exports = { RestaurantModel };

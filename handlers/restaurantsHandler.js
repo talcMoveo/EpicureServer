@@ -1,6 +1,6 @@
 const restaurantModel = require("../schemes/restaurantScheme").RestaurantModel;
 
-const postRestaurant = async (data) => {
+const postRestaurant = (data) => {
   return restaurantModel.create(data);
 };
 

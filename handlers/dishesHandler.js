@@ -1,7 +1,7 @@
 const dishModel = require("../schemes/dishScheme").DishModel;
 const restaurantModel = require("../schemes/restaurantScheme").RestaurantModel;
 
-const postDish = async (data) => {
+const postDish = (data) => {
   return dishModel.create(data);
 };
 
@@ -15,7 +15,6 @@ const getAllDishes = () => {
         as: 'restaurant',
       },
     },
-    { $unwind: '$restaurant' },
   ]);
 };
 

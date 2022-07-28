@@ -1,6 +1,6 @@
 const chefModel = require("../schemes/chefScheme").ChefModel;
 
-const postChef = async (data) => {
+const postChef = (data) => {
   return chefModel.create(data);
 };
 
