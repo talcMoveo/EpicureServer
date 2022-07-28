@@ -20,12 +20,13 @@ const addDish = async (req, res) => {
 
 const getDishList = async (req, res) => {
   try {
-    const result = await dishedHandler.getAllDishes();
+    const result = await dishesHandler.getAllDishes();
     res.status(200).json({
       status: "Success",
       data: result,
     });
   } catch (error) {
+    console.log(error)
     res.status(400).json({
       status: "Failed",
       message: error,
