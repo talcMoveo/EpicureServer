@@ -6,15 +6,9 @@ const addRestaurant = async (req, res) => {
       ...req.body,
     };
     const result = await restaurantsHandler.postRestaurant(restaurant);
-    res.status(200).json({
-      status: "Success",
-      data: result,
-    });
+    res.send(result);
   } catch (error) {
-    res.status(400).json({
-      status: "Failed",
-      message: error,
-    });
+    res.send(error);
   }
 };
 

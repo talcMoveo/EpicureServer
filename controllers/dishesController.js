@@ -6,32 +6,32 @@ const addDish = async (req, res) => {
       ...req.body,
     };
     const result = await dishesHandler.postDish(dish);
-    res.status(200).json({
-      status: "Success",
-      data: result,
-    });
+    res.send(result);
   } catch (error) {
-    res.status(400).json({
-      status: "Failed",
-      message: error,
-    });
+    res.send(error);
   }
 };
 
 const getDishList = async (req, res) => {
   try {
     const result = await dishesHandler.getAllDishes();
-    res.status(200).json({
-      status: "Success",
-      data: result,
-    });
+    res.send(result);
   } catch (error) {
-    console.log(error)
-    res.status(400).json({
-      status: "Failed",
-      message: error,
-    });
+    res.send(error);
   }
+  // try {
+  //   const result = await dishesHandler.getAllDishes();
+  //   res.status(200).json({
+  //     status: "Success",
+  //     data: result,
+  //   });
+  // } catch (error) {
+  //   console.log(error)
+  //   res.status(400).json({
+  //     status: "Failed",
+  //     message: error,
+  //   });
+  // }
 }
 
 module.exports = { addDish, getDishList };
