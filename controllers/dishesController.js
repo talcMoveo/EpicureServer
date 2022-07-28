@@ -34,7 +34,4 @@ const getDishList = async (req, res) => {
   }
 }
 
-module.exports = {
-  addDish,
-  getDishList
-};
+module.exports = { addDish, getDishList };
