@@ -8,6 +8,7 @@ const addChef = async (req, res) => {
     const result = await chefsHandler.postChef(chef);
     res.send(result);
   } catch (error) {
+    console.log(error);
     res.send(error);
   }
 };

@@ -2,8 +2,6 @@ const chefModel = require("../schemes/chefScheme").ChefModel;
 const dishModel = require("../schemes/dishScheme").DishModel;
 const restaurantModel = require("../schemes/restaurantScheme").RestaurantModel;
 
-const models = [chefModel, dishModel, restaurantModel];
-
 const getSearchRes = async (searchWord) => {
     const regExStr = new RegExp(".*" + searchWord + ".*");
     const chefRes = await chefModel.find({ name : regExStr });

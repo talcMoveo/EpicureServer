@@ -8,6 +8,7 @@ const addDish = async (req, res) => {
     const result = await dishesHandler.postDish(dish);
     res.send(result);
   } catch (error) {
+    console.log(error);
     res.send(error);
   }
 };

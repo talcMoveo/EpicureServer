@@ -8,6 +8,7 @@ const addRestaurant = async (req, res) => {
     const result = await restaurantsHandler.postRestaurant(restaurant);
     res.send(result);
   } catch (error) {
+    console.log(error);
     res.send(error);
   }
 };
