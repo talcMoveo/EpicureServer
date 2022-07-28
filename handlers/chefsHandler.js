@@ -1,7 +1,20 @@
 const chefModel = require("../schemes/chefScheme").ChefModel;
 
-const postChef = (data) => {
+const addChef = (data) => {
   return chefModel.create(data);
 };
 
-module.exports = { postChef };
+const getChef = (chefId) => {
+  return chefModel.findById(chefId);
+};
+
+const updateChef = (chefId, newData) => {
+  return chefModel.findByIdAndUpdate(chefId, newData);
+};
+
+const deleteChef = (chefId) => {
+  return chefModel.deleteOne({_id : chefId});
+};
+
+
+module.exports = { addChef, getChef, updateChef, deleteChef };
