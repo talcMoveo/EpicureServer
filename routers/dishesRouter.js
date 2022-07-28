@@ -3,4 +3,5 @@ const dishesController = require("../controllers/dishesController");
 
 module.exports = { dishesRouter };
 
-dishesRouter.post("/", (req, res) => {dishesController.requestAddDish});
+dishesRouter.post("/", dishesController.addDish);
+dishesRouter.get("/", dishesController.getDishList);

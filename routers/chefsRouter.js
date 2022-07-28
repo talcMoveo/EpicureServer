@@ -3,4 +3,4 @@ const chefsController = require("../controllers/chefsController");
 
 module.exports = { chefsRouter };
 
-chefsRouter.post("/", (req, res) => {chefsController.requestAddChef});
+chefsRouter.post("/", chefsController.addChef);

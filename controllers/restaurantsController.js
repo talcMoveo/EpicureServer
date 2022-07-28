@@ -5,10 +5,10 @@ const addRestaurant = async (req, res) => {
     restaurant = {
       ...req.body,
     };
-    const handlerResult = await restaurantsHandler.postRestaurant(restaurant);
+    const result = await restaurantsHandler.postRestaurant(restaurant);
     res.status(200).json({
       status: "Success",
-      data: handlerResult,
+      data: result,
     });
   } catch (error) {
     res.status(400).json({
