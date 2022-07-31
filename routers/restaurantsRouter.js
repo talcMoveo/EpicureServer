@@ -5,5 +5,6 @@ module.exports = { restaurantsRouter };
 
 restaurantsRouter.post("/", restaurantsController.addRestaurant);
 restaurantsRouter.get("/:id", restaurantsController.getRestaurant);
+restaurantsRouter.patch("/activate/:id", restaurantsController.activateRestaurant);
 restaurantsRouter.patch("/:id", restaurantsController.updateRestaurant);
 restaurantsRouter.delete("/:id", restaurantsController.deleteRestaurant);

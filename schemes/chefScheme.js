@@ -10,6 +10,10 @@ const ChefSchema = new mongoose.Schema({
   description: {
     type: String,
   },
+  active: {
+    type: Boolean,
+    default: true,
+  },
 });
 
 const ChefModel = mongoose.model('Chef', ChefSchema);

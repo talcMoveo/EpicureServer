@@ -1,4 +1,4 @@
-const searchHandler = require("../Handlers/searchHandler");
+const searchHandler = require("../handlers/searchHandler");
 
 const getSearch = async (req, res) => {
   try {

@@ -10,9 +10,13 @@ const RestaurantSchema = new mongoose.Schema({
   rating: {
     type: Number,
   },
-  chef: {
+  chefRef: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'chefs',
+  },
+  active: {
+    type: Boolean,
+    default: true,
   },
 });
 

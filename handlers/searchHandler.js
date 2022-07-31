@@ -19,13 +19,11 @@ const getSearchRes = async (qureyParams) => {
         qureyParams[param] = regExStr;
     }
 
-    const [chefRes, dishRes, restaurantRes] = await Promise.all(
-            [
-                chefModel.find(qureyParams),
-                dishModel.find(qureyParams),
-                restaurantModel.find(qureyParams)
-            ]
-        );
+    const [chefRes, dishRes, restaurantRes] = await Promise.all([
+            chefModel.find(qureyParams),
+            dishModel.find(qureyParams),
+            restaurantModel.find(qureyParams)
+        ]);
 
     return ({
         chefResults : chefRes,

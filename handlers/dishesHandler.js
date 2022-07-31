@@ -1,5 +1,4 @@
 const dishModel = require("../schemes/dishScheme").DishModel;
-const restaurantModel = require("../schemes/restaurantScheme").RestaurantModel;
 
 const addDish = (data) => {
   return dishModel.create(data);
@@ -31,9 +30,19 @@ const updateDish = (dishId, newData) => {
 };
 
 const deleteDish = (dishId) => {
-  return dishModel.deleteOne({_id : dishId});
+  return dishModel.findByIdAndUpdate(dishId, { active : false});
 };
 
+const activateDish = (dishId) => {
+  return dishModel.findByIdAndUpdate(dishId, { active : true});
+}
 
-module.exports = { addDish, getDish, getAllDishes, updateDish, deleteDish };
+const deleteSeveralDishes = async (restaurantIdRef) => {
+  return await dishModel.updateMany(
+    { restaurantRef: restaurantIdRef },
+    { active: false }
+  );
+}
+
+module.exports = { addDish, getDish, getAllDishes, updateDish, deleteDish, activateDish, deleteSeveralDishes };
 

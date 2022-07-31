@@ -6,5 +6,6 @@ module.exports = { dishesRouter };
 dishesRouter.post("/", dishesController.addDish);
 dishesRouter.get("/", dishesController.getDishList);
 dishesRouter.get("/:id", dishesController.getDish);
+dishesRouter.patch("/activate/:id", dishesController.activateDish);
 dishesRouter.patch("/:id", dishesController.updateDish);
 dishesRouter.delete("/:id", dishesController.deleteDish);
