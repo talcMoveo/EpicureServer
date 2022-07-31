@@ -9,13 +9,12 @@ const getSearchRes = async (qureyParams) => {
         if (qureyParams.name.length === 1) {
             qureyParams.name = qureyParams.name[0];
         }
+    } else {
+        delete qureyParams.name;
     }
     delete qureyParams.age;
     
-    console.log(qureyParams);
-
     for (const param in qureyParams) {
-        console.log('param: ', qureyParams[param]);
         let regExStr = new RegExp(".*" + qureyParams[param] + ".*");
         qureyParams[param] = regExStr;
     }
