@@ -2,7 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
-const v1Router = require('../routers/v1Router').v1Router;
+const apiRouter = require('../routers/apiRouter').apiRouter;
+
 const app = express();
 app.use(express.json());
 
@@ -34,6 +35,7 @@ let corsOptions = {
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/api', cors(corsOptions), v1Router);
+
+app.use('/api', cors(corsOptions), apiRouter);
 
 app.listen(9000, () => console.log('connected'));

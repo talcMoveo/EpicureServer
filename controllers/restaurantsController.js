@@ -1,21 +1,57 @@
-const restaurantsHandler = require("../Handlers/restaurantsHandler");
+const restaurantsHandler = require("../handlers/restaurantsHandler");
+const dishesHandler = require("../handlers/dishesHandler");
+
 
 const addRestaurant = async (req, res) => {
   try {
-    restaurant = {
-      ...req.body,
-    };
-    const result = await restaurantsHandler.postRestaurant(restaurant);
-    res.status(200).json({
-      status: "Success",
-      data: result,
-    });
+    const result = await restaurantsHandler.addRestaurant(req.body);
+    res.send(result);
   } catch (error) {
-    res.status(400).json({
-      status: "Failed",
-      message: error,
-    });
+    console.log(error);
+    res.send(error);
   }
 };
 
-module.exports = { addRestaurant };
+const getRestaurant = async (req, res) => {
+  try {
+    const result = await restaurantsHandler.getRestaurant(req.params.id);
+    res.send(result);
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+};
+
+const updateRestaurant = async (req, res) => {
+  try {
+    const result = await restaurantsHandler.updateRestaurant(req.params.id, req.body);
+    res.send(result);
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+};
+
+const deleteRestaurant = async (req, res) => {
+  try {
+    const result = await restaurantsHandler.deleteRestaurant(req.params.id);
+    await dishesHandler.deleteSeveralDishes(req.params.id);
+    res.send(result);
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+};
+
+const activateRestaurant = async (req, res) => {
+  try {
+    const result = await restaurantsHandler.activateRestaurant(req.params.id);
+    res.send(result);
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+};
+
+
+module.exports = { addRestaurant, getRestaurant, updateRestaurant, deleteRestaurant, activateRestaurant };
