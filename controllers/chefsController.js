@@ -1,21 +1,63 @@
-const chefsHandler = require("../Handlers/chefsHandler");
+const chefsHandler = require("../handlers/chefsHandler");
+const restaurantsHandler = require("../handlers/restaurantsHandler");
+const dishesHandler = require("../handlers/dishesHandler");
 
 const addChef = async (req, res) => {
   try {
-    chef = {
-      ...req.body,
-    };
-    const handlerResult = await chefsHandler.postChef(chef);
-    res.status(200).json({
-      status: "Success",
-      data: handlerResult,
-    });
+    const result = await chefsHandler.addChef(req.body);
+    res.send(result);
   } catch (error) {
-    res.status(400).json({
-      status: "Failed",
-      message: error,
-    });
+    console.log(error);
+    res.send(error);
   }
 };
 
-module.exports = { addChef };
+const getChef = async (req, res) => {
+  try {
+    const result = await chefsHandler.getChef(req.params.id);
+    res.send(result);
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+};
+
+const updateChef = async (req, res) => {
+  try {
+    const result = await chefsHandler.updateChef(req.params.id, req.body);
+    res.send(result);
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+};
+
+const deleteChef = async (req, res) => {
+  try {
+    const result = await chefsHandler.deleteChef(req.params.id);
+    res.send(result);
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+};
+
+const ifWeWantToDelRestaurants = async () => {
+  await restaurantsHandler.deleteSeveralRestaurants(req.params.id);
+  const deletedRestaurants = await restaurantsHandler.getRestaurantsIdByChef(req.params.id);
+  await deletedRestaurants.forEach(res => {
+    dishesHandler.deleteSeveralDishes(res);
+  })
+}
+
+const activateChef = async (req, res) => {
+  try {
+    const result = await chefsHandler.activateChef(req.params.id);
+    res.send(result);
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+};
+
+module.exports = { addChef, getChef, updateChef, deleteChef, activateChef };

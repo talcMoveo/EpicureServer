@@ -1,5 +1,4 @@
-const { ObjectId } = require("mongodb");
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const ChefSchema = new mongoose.Schema({
   name: {
@@ -11,8 +10,12 @@ const ChefSchema = new mongoose.Schema({
   description: {
     type: String,
   },
+  active: {
+    type: Boolean,
+    default: true,
+  },
 });
 
-const Chef = mongoose.model("Chef", ChefSchema);
+const ChefModel = mongoose.model('Chef', ChefSchema);
 
-module.exports = Chef;
+module.exports = { ChefModel };

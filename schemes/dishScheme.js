@@ -1,5 +1,4 @@
-const { ObjectId } = require("mongodb");
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const DishSchema = new mongoose.Schema({
   name: {
@@ -25,10 +24,14 @@ const DishSchema = new mongoose.Schema({
   },
   restaurantRef: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "restaurants",
-  }
+    ref: 'restaurants',
+  },
+  active: {
+    type: Boolean,
+    default: true,
+  },
 });
 
-const Dish = mongoose.model("Dish", DishSchema);
+const DishModel = mongoose.model('Dish', DishSchema);
 
-module.exports = Dish;
+module.exports = { DishModel };
