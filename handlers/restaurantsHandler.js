@@ -34,3 +34,4 @@ const getRestaurantsIdByChef = async (chefIdRef) => {
 }
 
 module.exports = { addRestaurant, getRestaurant, updateRestaurant, deleteRestaurant, activateRestaurant, deleteSeveralRestaurants, getRestaurantsIdByChef };
+

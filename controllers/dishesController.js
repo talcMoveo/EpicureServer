@@ -2,6 +2,7 @@ const dishesHandler = require("../handlers/dishesHandler");
 
 const addDish = async (req, res) => {
   try {
+
     const result = await dishesHandler.addDish(req.body);
     res.send(result);
   } catch (error) {
