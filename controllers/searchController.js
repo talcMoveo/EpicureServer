@@ -10,9 +10,9 @@ const getSearch = async (req, res) => {
   }
 };
 
-const getSearchOld = async (req, res) => {
+const postSearch = async (req, res) => {
   try {
-    const result = await searchHandler.getSearchRes(req.body.input);
+    const result = await searchHandler.postSearchRes(req.body.input);
     res.send(result);
   } catch (error) {
     console.log(error);
@@ -20,4 +20,4 @@ const getSearchOld = async (req, res) => {
   }
 };
 
-module.exports = { getSearch };
+module.exports = { getSearch, postSearch };

@@ -3,17 +3,6 @@ const dishModel = require("../schemes/dishScheme").DishModel;
 const restaurantModel = require("../schemes/restaurantScheme").RestaurantModel;
 
 const getSearchRes = async (qureyParams) => {
-    // why do I have name and age in the query?
-    if (Array.isArray(qureyParams.name)) {
-        qureyParams.name.pop('tal');
-        if (qureyParams.name.length === 1) {
-            qureyParams.name = qureyParams.name[0];
-        }
-    } else {
-        delete qureyParams.name;
-    }
-    delete qureyParams.age;
-    
     for (const param in qureyParams) {
         let regExStr = new RegExp(".*" + qureyParams[param] + ".*");
         qureyParams[param] = regExStr;
@@ -33,7 +22,7 @@ const getSearchRes = async (qureyParams) => {
     
 }
 
-const getSearchResOld = async (searchWord) => {
+const postSearchRes = async (searchWord) => {
     const regExStr = new RegExp(".*" + searchWord + ".*");
 
     const [chefRes, dishRes, restaurantRes] = await Promise.all(
@@ -51,4 +40,4 @@ const getSearchResOld = async (searchWord) => {
     });
 }
 
-module.exports = { getSearchRes };
+module.exports = { getSearchRes, postSearchRes };

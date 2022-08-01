@@ -4,8 +4,13 @@ const addDish = (data) => {
   return dishModel.create(data);
 };
 
-const getAllDishes1 = () => {
+const getAllDishes = () => {
   return dishModel.aggregate([
+    {
+       $match: {
+        active : true,
+       }
+    },
     {
       $lookup: {
         from: 'restaurants',
@@ -17,8 +22,8 @@ const getAllDishes1 = () => {
   ]);
 };
 
-const getAllDishes = async () => {
-  return await dishModel.find({}).populate({path : 'restaurantRef', model : restaurantModel});
+const getAllDishes_method2 = async () => {
+  return await dishModel.find({active: true}).populate({path : 'restaurantRef', model : restaurantModel});
 }
 
 const getDish = (dishId) => {

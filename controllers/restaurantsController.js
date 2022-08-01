@@ -34,8 +34,8 @@ const updateRestaurant = async (req, res) => {
 
 const deleteRestaurant = async (req, res) => {
   try {
-    await dishesHandler.deleteSeveralDishes(req.params.id);
     const result = await restaurantsHandler.deleteRestaurant(req.params.id);
+    await dishesHandler.deleteSeveralDishes(req.params.id);
     res.send(result);
   } catch (error) {
     console.log(error);

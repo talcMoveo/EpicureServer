@@ -34,11 +34,6 @@ const updateChef = async (req, res) => {
 
 const deleteChef = async (req, res) => {
   try {
-    await restaurantsHandler.deleteSeveralRestaurants(req.params.id);
-    const deletedRestaurants = await restaurantsHandler.getRestaurantsIdByChef(req.params.id);
-    await deletedRestaurants.forEach(res => {
-      dishesHandler.deleteSeveralDishes(res);
-    })
     const result = await chefsHandler.deleteChef(req.params.id);
     res.send(result);
   } catch (error) {
@@ -46,6 +41,14 @@ const deleteChef = async (req, res) => {
     res.send(error);
   }
 };
+
+const ifWeWantToDelRestaurants = async () => {
+  await restaurantsHandler.deleteSeveralRestaurants(req.params.id);
+  const deletedRestaurants = await restaurantsHandler.getRestaurantsIdByChef(req.params.id);
+  await deletedRestaurants.forEach(res => {
+    dishesHandler.deleteSeveralDishes(res);
+  })
+}
 
 const activateChef = async (req, res) => {
   try {
