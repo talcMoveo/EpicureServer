@@ -1,7 +1,6 @@
 const restaurantsHandler = require("../handlers/restaurantsHandler");
 const dishesHandler = require("../handlers/dishesHandler");
 
-
 const addRestaurant = async (req, res) => {
   try {
     const result = await restaurantsHandler.addRestaurant(req.body);
@@ -24,7 +23,10 @@ const getRestaurant = async (req, res) => {
 
 const updateRestaurant = async (req, res) => {
   try {
-    const result = await restaurantsHandler.updateRestaurant(req.params.id, req.body);
+    const result = await restaurantsHandler.updateRestaurant(
+      req.params.id,
+      req.body
+    );
     res.send(result);
   } catch (error) {
     console.log(error);
@@ -53,5 +55,10 @@ const activateRestaurant = async (req, res) => {
   }
 };
 
-
-module.exports = { addRestaurant, getRestaurant, updateRestaurant, deleteRestaurant, activateRestaurant };
+module.exports = {
+  addRestaurant,
+  getRestaurant,
+  updateRestaurant,
+  deleteRestaurant,
+  activateRestaurant,
+};

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const RestaurantSchema = new mongoose.Schema({
   name: {
@@ -12,7 +12,7 @@ const RestaurantSchema = new mongoose.Schema({
   },
   chefRef: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'chefs',
+    ref: "chefs",
   },
   active: {
     type: Boolean,
@@ -20,6 +20,6 @@ const RestaurantSchema = new mongoose.Schema({
   },
 });
 
-const RestaurantModel = mongoose.model('Restaurant', RestaurantSchema);
+const RestaurantModel = mongoose.model("Restaurant", RestaurantSchema);
 
 module.exports = { RestaurantModel };

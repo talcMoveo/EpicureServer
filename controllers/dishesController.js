@@ -2,7 +2,6 @@ const dishesHandler = require("../handlers/dishesHandler");
 
 const addDish = async (req, res) => {
   try {
-
     const result = await dishesHandler.addDish(req.body);
     res.send(result);
   } catch (error) {
@@ -18,7 +17,7 @@ const getDishList = async (req, res) => {
   } catch (error) {
     res.send(error);
   }
-}
+};
 
 const getDish = async (req, res) => {
   try {
@@ -60,5 +59,11 @@ const activateDish = async (req, res) => {
   }
 };
 
-module.exports = { addDish, getDish, getDishList, updateDish, deleteDish, activateDish };
-
+module.exports = {
+  addDish,
+  getDish,
+  getDishList,
+  updateDish,
+  deleteDish,
+  activateDish,
+};

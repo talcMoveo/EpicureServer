@@ -13,11 +13,11 @@ const updateChef = (chefId, newData) => {
 };
 
 const deleteChef = (chefId) => {
-  return chefModel.findByIdAndUpdate(chefId, { active : false});
+  return chefModel.findByIdAndUpdate(chefId, { active: false });
 };
 
 const activateChef = (chefId) => {
-  return chefModel.findByIdAndUpdate(chefId, { active : true});
-}
+  return chefModel.findByIdAndUpdate(chefId, { active: true });
+};
 
 module.exports = { addChef, getChef, updateChef, deleteChef, activateChef };

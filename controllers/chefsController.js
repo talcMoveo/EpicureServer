@@ -44,11 +44,13 @@ const deleteChef = async (req, res) => {
 
 const ifWeWantToDelRestaurants = async () => {
   await restaurantsHandler.deleteSeveralRestaurants(req.params.id);
-  const deletedRestaurants = await restaurantsHandler.getRestaurantsIdByChef(req.params.id);
-  await deletedRestaurants.forEach(res => {
+  const deletedRestaurants = await restaurantsHandler.getRestaurantsIdByChef(
+    req.params.id
+  );
+  await deletedRestaurants.forEach((res) => {
     dishesHandler.deleteSeveralDishes(res);
-  })
-}
+  });
+};
 
 const activateChef = async (req, res) => {
   try {
