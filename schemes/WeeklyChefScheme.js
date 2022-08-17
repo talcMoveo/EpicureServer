@@ -7,6 +7,6 @@ const WeeklyChefSchema = new mongoose.Schema({
   },
 });
 
-const WeeklyChefModel = mongoose.model("WeeklyChef", WeeklyChefSchema);
+const WeeklyChefModel = mongoose.model("weeklychefs", WeeklyChefSchema);
 
 module.exports = { WeeklyChefModel };

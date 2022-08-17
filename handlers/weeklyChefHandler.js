@@ -1,15 +1,29 @@
 const weeklyChefModel = require("../schemes/weeklyChefScheme").WeeklyChefModel;
+const chefModel = require("../schemes/chefScheme").ChefModel;
 
-const changeWeeklyChef = async (newChef) => {
-    return await weeklyChefModel.findOneAndReplace({}, newChef);
+const createWeeklyChef = (newChef) => {
+    return  weeklyChefModel.create(newChef);
 };
 
-const getWeeklyChef = async () => {
-    return await chefOfTheWeekModel.find().populate("chefRef");
+const changeWeeklyChef = (newChef) => {
+    return  weeklyChefModel.findOneAndReplace({}, newChef);
 };
 
-const getWeeklyChefRestaurants = async () => {
-    return await chefOfTheWeekModel.aggregate([
+const getWeeklyChef = () => {
+    return weeklyChefModel.aggregate([
+        {
+          $lookup: {
+            from: "chefs",
+            localField: "chefRef",
+            foreignField: "_id",
+            as: "chef",
+          },
+        },
+      ]);
+};
+
+const getWeeklyChefRestaurants = () => {
+    return  weeklyChefModel.aggregate([
         {
           $lookup: {
             from: "chefs",
@@ -19,28 +33,23 @@ const getWeeklyChefRestaurants = async () => {
           },
         },
         {
-          $unwind: {
-            path: "$chef",
-          },
-        },
-        {
           $lookup: {
             from: "restaurants",
             localField: "chefRef._id",
-            foreignField: "chefRef",
-            as: "restaurants",
+            foreignField: "chefRef._id",
+            as: "chefRestaurants",
           },
-        },
-        {
-          $unwind: {
-            path: "$restaurants",
-          },
-        },
+          }
       ]);
 };
 
+// const getWeeklyChefRestaurants = () => {
+//     return  weeklyChefModel.find().populate({ path: "chefRef", model: chefModel });
+// };
+
 
 module.exports = {
+    createWeeklyChef,
     changeWeeklyChef,
     getWeeklyChef,
     getWeeklyChefRestaurants

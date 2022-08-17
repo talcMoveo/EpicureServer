@@ -25,8 +25,10 @@ db.once("open", function () {
   console.log("Connected successfully");
 });
 
+let origin= "http://localhost:3000";
+
 let corsOptions = {
-  origin: "http://localhost:3000",
+  AccessControlAllowOrigin: "*",
   credentials: true,
   optionSuccessStatus: 200,
 };
