@@ -8,6 +8,10 @@ const getChef = (chefId) => {
   return chefModel.findById(chefId);
 };
 
+const getAllChefs = () => {
+  return chefModel.find();
+};
+
 const updateChef = (chefId, newData) => {
   return chefModel.findByIdAndUpdate(chefId, newData);
 };
@@ -20,4 +24,4 @@ const activateChef = (chefId) => {
   return chefModel.findByIdAndUpdate(chefId, { active: true });
 };
 
-module.exports = { addChef, getChef, updateChef, deleteChef, activateChef };
+module.exports = { addChef, getChef, getAllChefs, updateChef, deleteChef, activateChef };

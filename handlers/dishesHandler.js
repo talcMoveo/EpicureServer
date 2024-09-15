@@ -1,10 +1,25 @@
 const dishModel = require("../schemes/dishScheme").DishModel;
+const restaurantModel = require("../schemes/restaurantScheme").RestaurantModel;
+
 
 const addDish = (data) => {
   return dishModel.create(data);
 };
 
-const getAllDishes = () => {
+const getAllDishes2 = () => {
+  return dishModel.aggregate([
+    {
+      $lookup: {
+        from: "restaurants",
+        localField: "restaurantRef",
+        foreignField: "_id",
+        as: "restaurant",
+      },
+    },
+  ]);
+};
+
+const getAllDishesWithMatch = () => {
   return dishModel.aggregate([
     {
       $match: {
@@ -22,10 +37,8 @@ const getAllDishes = () => {
   ]);
 };
 
-const getAllDishes_method2 = async () => {
-  return await dishModel
-    .find({ active: true })
-    .populate({ path: "restaurantRef", model: restaurantModel });
+const getAllDishes = async () => {
+  return await dishModel.find().populate({ path: "restaurantRef", model: restaurantModel });
 };
 
 const getDish = (dishId) => {

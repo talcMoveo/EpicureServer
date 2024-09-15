@@ -15,9 +15,9 @@ const getSearchRes = async (qureyParams) => {
   ]);
 
   return {
-    chefResults: chefRes,
-    dishResults: dishRes,
-    restaurantResults: restaurantRes,
+    chefs: chefRes,
+    dishes: dishRes,
+    restaurants: restaurantRes,
   };
 };
 

@@ -10,7 +10,7 @@ const addDish = async (req, res) => {
   }
 };
 
-const getDishList = async (req, res) => {
+const getAllDishes = async (req, res) => {
   try {
     const result = await dishesHandler.getAllDishes();
     res.send(result);
@@ -62,7 +62,7 @@ const activateDish = async (req, res) => {
 module.exports = {
   addDish,
   getDish,
-  getDishList,
+  getAllDishes,
   updateDish,
   deleteDish,
   activateDish,

@@ -22,6 +22,15 @@ const getChef = async (req, res) => {
   }
 };
 
+const getAllChefs = async (req, res) => {
+  try {
+    const result = await chefsHandler.getAllChefs();
+    res.send(result);
+  } catch (error) {
+    res.send(error);
+  }
+};
+
 const updateChef = async (req, res) => {
   try {
     const result = await chefsHandler.updateChef(req.params.id, req.body);
@@ -62,4 +71,4 @@ const activateChef = async (req, res) => {
   }
 };
 
-module.exports = { addChef, getChef, updateChef, deleteChef, activateChef };
+module.exports = { addChef, getChef, getAllChefs, updateChef, deleteChef, activateChef };

@@ -21,6 +21,26 @@ const getRestaurant = async (req, res) => {
   }
 };
 
+const getAllRestaurants = async (req, res) => {
+  try {
+    const result = await restaurantsHandler.getAllRestaurants(req.params.id);
+    res.send(result);
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+};
+
+const getPopularRestaurants = async (req, res) => {
+  try {
+    const result = await restaurantsHandler.getPopularRestaurants();
+    res.send(result);
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+};
+
 const updateRestaurant = async (req, res) => {
   try {
     const result = await restaurantsHandler.updateRestaurant(
@@ -55,10 +75,23 @@ const activateRestaurant = async (req, res) => {
   }
 };
 
+const getSignatureDishes = async (req, res) => {
+  try {
+    const result = await restaurantsHandler.getSignatureDishes();
+    res.send(result);
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+};
+
 module.exports = {
   addRestaurant,
   getRestaurant,
+  getAllRestaurants,
+  getPopularRestaurants,
   updateRestaurant,
   deleteRestaurant,
   activateRestaurant,
+  getSignatureDishes,
 };
